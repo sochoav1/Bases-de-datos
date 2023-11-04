@@ -100,7 +100,6 @@ app.post('/api/employee', (req, res) => {
   });
 });
 
-
 // Delete a client by ID
 app.delete('/api/employee/:id', (req, res) => {
   const employeeId = req.params.id;
@@ -122,8 +121,8 @@ app.delete('/api/employee/:id', (req, res) => {
   });
 });
 
-//retrieve one employees
-app.get('/api/employee/:id', (req, res) => {
+//retrieve an employees by ID
+app.get('/api/employee-details/:id', (req, res) => {
   const employeeId = req.params.id;
 
   const sql = 'SELECT * FROM empleado WHERE Nro_empleado = ?';
@@ -143,8 +142,6 @@ app.get('/api/employee/:id', (req, res) => {
     }
   });
 });
-
-
 
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
