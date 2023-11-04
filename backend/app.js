@@ -11,7 +11,7 @@ app.use(cors());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Halo$$343117J$',
+  password: 'Fotografia123.',
   database: 'mydb',
 });
 
@@ -82,6 +82,69 @@ app.get('/api/client-details/:id', (req, res) => {
     }
   });
 });
+
+// add a new employee
+app.post('/api/employee', (req, res) => {
+  const { id, name, salary, hire_date, schedule } = req.body;
+
+  const sql = 'INSERT INTO empleado (Nro_empleado, Nombre, Salario, Fecha_contratación, Horario) VALUES (?, ?, ?, ?, ?)';
+  const values = [id, name, salary, hire_date, schedule];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error inserting employee:', err);
+      res.status(500).json({ error: 'Error inserting employee' });
+    } else {
+      res.json({ message: 'Employee inserted successfully' });
+    }
+  });
+});
+
+
+// Delete a client by ID
+app.delete('/api/employee/:id', (req, res) => {
+  const employeeId = req.params.id;
+
+  const sql = 'DELETE FROM empleado WHERE Nro_empleado = ?';
+  const values = [employeeId];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error deleting employee:', err);
+      res.status(500).json({ error: 'Error deleting employee' });
+    } else {
+      if (result.affectedRows > 0) {
+        res.json({ message: 'Employee deleted successfully' });
+      } else {
+        res.status(404).json({ error: 'Employee not found' });
+      }
+    }
+  });
+});
+
+//retrieve one employees
+app.get('/api/employee/:id', (req, res) => {
+  const employeeId = req.params.id;
+
+  const sql = 'SELECT * FROM empleado WHERE Nro_empleado = ?';
+  const values = [employeeId];
+
+  db.query(sql, values, (err, results) => {
+    if (err) {
+      console.error('Error retrieving employee details:', err);
+      res.status(500).json({ error: 'Error retrieving employee details' });
+    } else {
+      if (results.length > 0) {
+        const employee = results[0]; // Assuming the ID is unique
+        res.json(employee);
+      } else {
+        res.status(404).json({ error: 'Employee not found' });
+      }
+    }
+  });
+});
+
+
 
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
