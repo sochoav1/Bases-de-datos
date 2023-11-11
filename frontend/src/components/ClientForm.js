@@ -35,7 +35,7 @@ const ClientForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Add a New Client</h2>
       <form onSubmit={handleSubmit}>
         <label>

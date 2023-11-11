@@ -40,7 +40,7 @@ const ClientRetrieval = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Retrieve Client Details by ID</h2>
       <label>
         Client ID:

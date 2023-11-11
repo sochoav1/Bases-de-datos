@@ -22,7 +22,7 @@ const ClientDeletion = () => {
   };
 
   return (
-    <div>
+    <div className="form-container" >
       <h2>Delete a Client</h2>
       <label>
         Client ID:

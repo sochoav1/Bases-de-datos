@@ -22,7 +22,7 @@ const EmployeeDeletion = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Delete a Employee</h2>
       <label>
         Employee ID:

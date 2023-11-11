@@ -35,7 +35,7 @@ const EmployeeForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h2>Add a New Employee</h2>
       <form onSubmit={handleSubmit}>
         <label>
