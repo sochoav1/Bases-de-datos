@@ -71,3 +71,24 @@ p {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.client-container,
+.employee-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.client-container h2,
+.employee-container h2 {
+  text-align: center;
+}
+
+
+button {
+  width: 100%;
+}
